@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <title>Computer Store Records</title>
+  </head>
+  <body onload="putMaxComputers()">
+    <header>
+      <div id="container-1">
+        <h1>Welcome to the Store</h1>
+      </div>
+    </header>
+    <input
+      type="button"
+      onclick="createComputer()"
+      value="Create New Computer"
+    />
+    <input
+      type="button"
+      onclick="getAllComputers()"
+      value="Show All Computers"
+    />
+    <input
+      type="button"
+      onclick="getComputerCount()"
+      value="Computer Count"
+    />
+    <br />
+    <br />
+    <div id="data"></div>
+    <script src="./one.js"></script>
+  </body>
+</html>
