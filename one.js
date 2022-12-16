@@ -1,13 +1,14 @@
+// Computer class used to create different objects of same type
 class Computer {
 
-    static comuterCount = 0;
+    static computerCount = 0;
 
     constructor(brand, model, sn, price) {
         this.brand = brand;
         this.model = model;
         this.sn = sn;
         this.price = price;
-        Computer.comuterCount++;
+        Computer.computerCount++;
     }
 
     get getbrand() {
@@ -52,7 +53,7 @@ var inventory = [];
 var maxComputerCount = 0;
 var password = 'password'
 
-
+// create computer object with valid values for SN and Price (Regular Expressions)
 function createComputer() {
     let enteredPassword = prompt("Enter the Password")
     let flag = verification(enteredPassword);
@@ -64,11 +65,22 @@ function createComputer() {
         let brand = prompt("Enter the Brand");
         let model = prompt("Enter the Model");
         let sn = prompt("Enet the SN")
-        let price = prompt("Enet the Price")
+        let reg_sn = /\d{3}-?\d{3}-?\d{3}/gm;
+        let reg_price = /^\d+(?:\.\d{1,2})?$/gm
+        
+        while(!(reg_sn.test(sn))){
+            sn = prompt("Invalid SN! \nSN should be 9 digits in the order \nXXX-XXX-XXX \nPlease re-enter the SN")
+        }
+        let price = prompt("Enter the Price")
+        while(!(reg_price.test(price))){
+            price = prompt("Invalid Price! \nPlease re-enter the price")
+        }
         let computer  = new Computer(brand, model, sn, price)
-    
+        
+        // push each computer object created into the inventory array and log on the console
         this.inventory.push(computer);
         console.log("Computer Created");
+        console.log(this.inventory)
         getAllComputers();
     }
     if(!flag){
@@ -76,6 +88,7 @@ function createComputer() {
     }
 }
 
+// verify password and reload page after 3 failed attempts
 function verification(enteredPassword) {
     let flag = true;
     let flagCount = 0;
@@ -95,23 +108,7 @@ function verification(enteredPassword) {
     return false;
 }
 
-// function getAllComputers() {
-//     let html = "";
-//     let index = 1;
-//     inventory.forEach(element => {
-//         html = html + "<div style='width: 300px; height: 300px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 2px 16px; background-color: #D3D3D3;'> "+ 
-//         "<h3>Computer " + index +"</h3>" +
-//         "<h4>Brand: "+ element.getbrand +"</h4>" +
-//         "<h4>Model: "+ element.getmodel +"</h4>" +
-//         "<h4>SN: "+ element.getsn +"</h4>" +
-//         "<h4>Price: "+ element.getprice +"</h4>" +
-//         "</div>" + 
-//         "<br>";
-//         index++;
-//     });
-//     document.getElementById('data').innerHTML = html;
-// }
-
+// Display all computer with their info after creation of computer object
 function getAllComputers() {
     let html = "";
     let index = 1;
@@ -129,16 +126,16 @@ function getAllComputers() {
     document.getElementById('data').innerHTML = html;
 }
 
+// record number of computer objects created
 function getComputerCount() {
-    console.log();
-    let count = Computer.comuterCount;
+    let count = Computer.computerCount;
     let html = "<h1>Total Count of Computer is :" + count + "</h1>"
     document.getElementById('data').innerHTML = html;
 }
 
-
+// maximum number of objects to be created
 function putMaxComputers() {
     alert("Welcome to the Store");
-    let maxComputers = prompt("Please set max Computers");
+    let maxComputers = prompt("Please set max number of computers");
     this.maxComputerCount = maxComputers;
 }
