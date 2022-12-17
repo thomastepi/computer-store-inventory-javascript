@@ -58,13 +58,13 @@ function createComputer() {
     let enteredPassword = prompt("Enter the Password")
     let flag = verification(enteredPassword);
     if(flag) {
-        if(inventory.length > maxComputerCount) {
+        if(inventory.length >= maxComputerCount) {
             alert("Inventory is Full")
             return;
         }
         let brand = prompt("Enter the Brand");
         let model = prompt("Enter the Model");
-        let sn = prompt("Enet the SN")
+        let sn = prompt("Enter the SN")
         let reg_sn = /\d{3}-?\d{3}-?\d{3}/gm;
         let reg_price = /^\d+(?:\.\d{1,2})?$/gm
         
@@ -129,7 +129,7 @@ function getAllComputers() {
 // record number of computer objects created
 function getComputerCount() {
     let count = Computer.computerCount;
-    let html = "<h1>Total Count of Computer is :" + count + "</h1>"
+    let html = "<h1>Total Count of Computer is: " + count + "</h1>"
     document.getElementById('data').innerHTML = html;
 }
 
