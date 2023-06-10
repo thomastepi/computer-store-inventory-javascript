@@ -1,3 +1,4 @@
+
 // Computer class used to create different objects of same type
 class Computer {
 
@@ -18,7 +19,7 @@ class Computer {
     set setbrand(brand) {
         this.brand = brand;
     }
-    
+
     get getmodel() {
         return this.model;
     }
@@ -46,7 +47,7 @@ class Computer {
     get getcount() {
         return this.count;
     }
-    
+
 }
 
 var inventory = [];
@@ -55,28 +56,28 @@ var password = 'password'
 
 // create computer object with valid values for SN and Price (Regular Expressions)
 function createComputer() {
-    let enteredPassword = prompt("Enter the Password")
+    let enteredPassword = prompt("Enter Password")
     let flag = verification(enteredPassword);
     if(flag) {
         if(inventory.length >= maxComputerCount) {
             alert("Inventory is Full")
             return;
         }
-        let brand = prompt("Enter the Brand");
-        let model = prompt("Enter the Model");
-        let sn = prompt("Enter the SN")
+        let brand = prompt("Enter brand name");
+        let model = prompt("Enter model name");
+        let sn = prompt("Enter SN")
         let reg_sn = /\d{3}-?\d{3}-?\d{3}/gm;
         let reg_price = /^\d+(?:\.\d{1,2})?$/gm
-        
+
         while(!(reg_sn.test(sn))){
             sn = prompt("Invalid SN! \nSN should be 9 digits in the order \nXXX-XXX-XXX \nPlease re-enter the SN")
         }
-        let price = prompt("Enter the Price")
+        let price = prompt("Enter Price")
         while(!(reg_price.test(price))){
             price = prompt("Invalid Price! \nPlease re-enter the price")
         }
         let computer  = new Computer(brand, model, sn, price)
-        
+
         // push each computer object created into the inventory array and log on the console
         this.inventory.push(computer);
         console.log("Computer Created");
@@ -96,7 +97,7 @@ function verification(enteredPassword) {
         return true;
     }
     while(flag) {
-        enteredPassword = prompt("Wrong Password \n Enter the Password");
+        enteredPassword = prompt("Wrong Password \n Enter correct Password");
         if(password == enteredPassword) {
             return true;
         }
@@ -108,18 +109,18 @@ function verification(enteredPassword) {
     return false;
 }
 
-// Display all computer with their info after creation of computer object
+// Display all computers with their info after creation of computer object
 function getAllComputers() {
     let html = "";
     let index = 1;
     inventory.forEach(element => {
-        html = html + "<div> "+ 
+        html = html + "<div> "+
         "<h3>Computer " + index +"</h3>" +
         "<h4>Brand: "+ element.getbrand +"</h4>" +
         "<h4>Model: "+ element.getmodel +"</h4>" +
         "<h4>SN: "+ element.getsn +"</h4>" +
         "<h4>Price: "+ element.getprice +"</h4>" +
-        "</div>" + 
+        "</div>" +
         "<br>";
         index++;
     });
@@ -129,13 +130,13 @@ function getAllComputers() {
 // record number of computer objects created
 function getComputerCount() {
     let count = Computer.computerCount;
-    let html = "<h1>Total Count of Computer is: " + count + "</h1>"
+    let html = "<h1>Total Count of Computer(s) is: " + count + "</h1>"
     document.getElementById('data').innerHTML = html;
 }
 
-// maximum number of objects to be created
-function putMaxComputers() {
-    alert("Welcome to the Store");
+// maximum number of computer objects to be created
+function setMaxComputers() {
+    alert("Store inventory");
     let maxComputers = prompt("Please set max number of computers");
     this.maxComputerCount = maxComputers;
 }

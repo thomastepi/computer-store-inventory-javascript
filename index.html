@@ -1,3 +1,10 @@
+<!--
+Thomas Tepi Tepi
+Krishna Chaitanya
+Sai Kiran Gai
+Felipe Cardona Jaramillo
+-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,19 +17,20 @@
       href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="style/index.css" />
     <title>Computer Store Records</title>
   </head>
-  <body onload="putMaxComputers()">
+  <body onload="setMaxComputers()">
     <header>
       <div id="container-1">
-        <h1>Welcome to the Store</h1>
+        <h1>Moghamo Electronics</h1>
+        <h3>Inventory</h3>
       </div>
     </header>
     <input
       type="button"
       onclick="createComputer()"
-      value="Create New Computer"
+      value="Add Computer"
     />
     <input
       type="button"
@@ -37,6 +45,6 @@
     <br />
     <br />
     <div id="data"></div>
-    <script src="./one.js"></script>
+    <script src="script/index.js"></script>
   </body>
 </html>
